@@ -18,8 +18,25 @@
     //   </div>
     // )
 
-    function Message({children}) {
-      return <div className="message">{children}</div>
+    function Message({subject, greeting}) {
+      return (
+        <div className="message">
+          {greeting}, {subject}
+        </div>
+      )
+    }
+
+    const PropTypes = {
+      string(props, propName, componentName) {
+        if (typeof props[propName] !== 'string') {
+          return new Error(`Missing prop`)
+        }
+      },
+    }
+
+    Message.prototypes = {
+      subject: PropTypes.string,
+      greeting: PropTypes.string,
     }
 
     // const element = (
@@ -31,8 +48,8 @@
 
     const element = (
       <div className="container">
-        <Message>Hello Worldsss</Message>
-        <Message>GoodBye Worlds'</Message>
+        <Message greting subject="World" />
+        <Message greeting="Goodbye" subject="World" />
       </div>
     )
 

@@ -38,11 +38,13 @@ import '../box-styles.css'
 //     large orange box
 //   </div>
 // )
+// Extra Credit - 3 with size prop being accepted.
 
-function Box({className = '', style, ...somethingElse}) {
+function Box({className = '', style, size, ...somethingElse}) {
+  const sizeClassName = size ? `box--${size}` : ''
   return (
     <div
-      className={`box ${className}`}
+      className={`box ${className} ${sizeClassName}`}
       style={{fontStyle: 'italic', ...style}}
       {...somethingElse}
     />
@@ -53,13 +55,13 @@ function App() {
   return (
     <div>
       <div>
-        <Box className="box--small" style={{backgroundColor: 'lightblue'}}>
+        <Box size="small" style={{backgroundColor: 'lightblue'}}>
           small lightblue box
         </Box>
-        <Box className="box--medium" style={{backgroundColor: 'pink'}}>
+        <Box size="medium" style={{backgroundColor: 'pink'}}>
           medium pink box
         </Box>
-        <Box className="box--large" style={{backgroundColor: 'orange'}}>
+        <Box size="large" style={{backgroundColor: 'orange'}}>
           large orange box
         </Box>
         <Box>sizeless box</Box>
